@@ -16,6 +16,14 @@ import { MovingSpike } from "./entities/moving-spike";
 import { Checkpoint } from "./entities/checkpoint";
 import { Door } from "./entities/door";
 
+// Define a generic entity type to replace 'any'
+interface Entity {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 // Object pool for falling spikes to reduce garbage collection
 class FallingSpikePool {
   private pool: FallingSpike[] = [];
@@ -77,7 +85,7 @@ export default class GameEngine {
   spikeSpawnInterval = 2; // seconds
 
   // Spatial partitioning for collision detection optimization
-  private spatialGrid: Map<string, any[]> = new Map();
+  private spatialGrid: Map<string, Entity[]> = new Map();
   private gridCellSize = 100; // Size of each grid cell
 
   /**
@@ -254,7 +262,7 @@ export default class GameEngine {
   /**
    * Add an entity to the spatial grid
    */
-  private addToSpatialGrid(entity: any) {
+  private addToSpatialGrid(entity: Entity) {
     const startX = Math.floor(entity.x / this.gridCellSize);
     const startY = Math.floor(entity.y / this.gridCellSize);
     const endX = Math.floor((entity.x + entity.width) / this.gridCellSize);
@@ -269,37 +277,6 @@ export default class GameEngine {
         this.spatialGrid.get(key)!.push(entity);
       }
     }
-  }
-
-  /**
-   * Get entities from the spatial grid that could potentially collide with the given entity
-   */
-  private getPotentialCollisions(entity: any): any[] {
-    const startX = Math.floor(entity.x / this.gridCellSize);
-    const startY = Math.floor(entity.y / this.gridCellSize);
-    const endX = Math.floor((entity.x + entity.width) / this.gridCellSize);
-    const endY = Math.floor((entity.y + entity.height) / this.gridCellSize);
-
-    const potentialCollisions: any[] = [];
-
-    for (let x = startX; x <= endX; x++) {
-      for (let y = startY; y <= endY; y++) {
-        const key = `${x},${y}`;
-        const cellEntities = this.spatialGrid.get(key);
-        if (cellEntities) {
-          for (const otherEntity of cellEntities) {
-            if (
-              otherEntity !== entity &&
-              !potentialCollisions.includes(otherEntity)
-            ) {
-              potentialCollisions.push(otherEntity);
-            }
-          }
-        }
-      }
-    }
-
-    return potentialCollisions;
   }
 
   /**
@@ -580,7 +557,7 @@ export default class GameEngine {
   /**
    * Simple AABB (Axis-Aligned Bounding Box) collision detection
    */
-  checkCollision(a: any, b: any) {
+  checkCollision(a: Entity, b: Entity): boolean {
     return (
       a.x < b.x + b.width &&
       a.x + a.width > b.x &&

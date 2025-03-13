@@ -129,9 +129,9 @@ export default function Game() {
         <div className="flex flex-col items-center justify-center bg-gray-800 rounded-lg p-8 mb-4">
           <h2 className="text-2xl font-bold text-white mb-4">Ready to Play?</h2>
           <p className="text-gray-300 mb-6 text-center max-w-md">
-            This is a challenging platformer inspired by "I Wanna Be the Guy".
+            {`This is a challenging platformer inspired by "I Wanna Be the Guy".
             Avoid spikes, navigate moving platforms, and reach the door at the
-            end to win!
+            end to win!`}
           </p>
           <button
             onClick={startGame}

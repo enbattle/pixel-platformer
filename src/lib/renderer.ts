@@ -150,7 +150,7 @@ export default class Renderer {
     this.ctx.drawImage(this.gridCanvas, 0, 0);
 
     // Draw level indicator
-    this.drawLevelIndicator(fps);
+    this.drawLevelIndicator();
 
     // Draw platforms
     this.engine.platforms.forEach((platform) => {
@@ -348,9 +348,9 @@ export default class Renderer {
   }
 
   /**
-   * Draw the current level number and FPS
+   * Draw the current level number
    */
-  drawLevelIndicator(fps = 0) {
+  drawLevelIndicator() {
     this.ctx.fillStyle = "#ffffff";
     this.ctx.font = "16px Arial";
     this.ctx.textAlign = "left";
