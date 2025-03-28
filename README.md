@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pixel Platformer
+
+A modern 2D platformer game built with Next.js and TypeScript. Jump, dodge, and navigate through challenging levels filled with platforms, spikes, and checkpoints.
+Inspired by "I wanna be the guy" platformer game.
+
+Live site here: [https://enbattle.github.io/pixel-platformer/](https://enbattle.github.io/pixel-platformer/)
+
+## Features
+
+- 🎮 Smooth platformer gameplay mechanics
+- 🏃‍♂️ Player movement and physics
+- ⚡ Dynamic platform interactions
+- ⚠️ Hazardous obstacles (spikes)
+- 🚪 Level completion system
+- 💾 Checkpoint system
+- 🎯 Progressive difficulty
+
+## Tech Stack
+
+- **Framework**: Next.js 15.2.2
+- **Language**: TypeScript
+- **Styling**: TailwindCSS
+- **Development**: Turbopack
+- **Code Quality**: ESLint
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/pixel-platformer.git
+cd pixel-platformer
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to start playing!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+# or
+yarn build
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/              # Next.js application files
+├── components/       # React components
+│   └── game.tsx     # Main game component
+└── lib/             # Game logic and utilities
+    ├── game-engine.ts    # Core game engine
+    ├── renderer.ts       # Game rendering system
+    └── entities/         # Game objects
+        ├── player.ts
+        ├── platform.ts
+        ├── spike.ts
+        ├── moving-spike.ts
+        ├── door.ts
+        └── checkpoint.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Deploy on Vercel
+## Acknowledgments
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Built with [Next.js](https://nextjs.org/)
+- Inspired by classic platformer games
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Disclaimer
+
+The game currently prioritizes game logic and functions. Will update designs and visual elements at a later time.
